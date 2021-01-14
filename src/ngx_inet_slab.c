@@ -421,7 +421,7 @@ ngx_parse_inet6_url(ngx_slab_pool_t *pool, ngx_url_t *u)
     u->addrs[0].sockaddr = (struct sockaddr *) sin6;
     u->addrs[0].socklen = sizeof(struct sockaddr_in6);
 
-    p = ngx_slab_alloc(pool, u->host.len + sizeof(":65535") - 1);
+    p = ngx_slab_alloc_locked(pool, u->host.len + sizeof(":65535") - 1);
     if (p == NULL) {
         return NGX_ERROR;
     }
